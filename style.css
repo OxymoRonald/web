@@ -23,32 +23,60 @@ body {
 }
 
     .itemlist {
-        border: 5px solid black
+        border: 3px solid black;
+        border-collapse: collapse;
+        float: left;
+        display: block;
+        margin-left: 10px;
     }
 
     .itemlist th {
         font-size: 24px;
-        padding: 10px;
+        padding: 5px;
+        border-bottom: 3px solid black;
     }
 
     .itemlist td {
-        padding: 5px;
+        border-top: 2px solid black;
+        text-align: center;
     }
 
     .item_image {
-        width: 100px;
-        height: 100px;
+        padding:2px;
+        width:90px;
     }
 
-    .item_description {
-        width: 300px;
+        .item_image img {
+            width:90px;
+        }
+
+    .item_body {
+        width: 260px;
     }
+
+        .item_title {
+            font-size: 24px;
+        }
+
+        .item_description {
+            font-size: 14px;
+        }
 
     .item_add {
-        width: 100px;
+        width: 40px;
+    }
+
+    .item_buttons {
+        background-color:cornflowerblue;
+    }
+
+    .item_counter {
+        font-size: 24px;
+        padding:15px;
+        background-color: chartreuse;
     }
 
 #right_block {
-    width: 350px;
+    width: 410px;
     background-color: brown;
 }

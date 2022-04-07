@@ -1,0 +1,40 @@
+{
+    "Food":{
+        "Dirty Fries":{
+            "description": "That's some dirty fries",
+            "price": 80
+        },
+        "Heart Attack Burger":{},
+        "Mamma's Chicken Wings":{}
+    },
+    "Drinks":{
+        "Sweet Tea":{},
+        "Root Beer":{},
+        "Beer":{},
+        "Whiskey":{},
+        "Vodka":{}
+    },
+    "Miscelaneous":{
+        "Whiskey Tincture":{},
+        "Morningwood Cigarettes":{},
+        "Lost Plushie":{}
+    },
+    "Combos":{
+        "Heart Attack Meal":{
+            "items":{
+                "Dirty Fries":1, 
+                "Heart Attack Burger":1, 
+                "Root Beer":1
+            },
+            "price":230
+        },
+        "Hungry Man Combo":{
+            "items":{},
+            "price":540
+        },
+        "Gimme the 9s":{
+            "items":{},
+            "price":999
+        }
+    }
+}
