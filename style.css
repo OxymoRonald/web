@@ -26,6 +26,15 @@ body {
         border: 5px solid black
     }
 
+    .itemlist th {
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    .itemlist td {
+        padding: 5px;
+    }
+
 #right_block {
     width: 350px;
     background-color: brown;
