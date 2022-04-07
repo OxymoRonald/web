@@ -10,3 +10,20 @@ body {
 p {
     font-size: 20px;
 }
+
+#wrapper {
+    background-color: blueviolet;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+#left_block {
+    background-color: aqua;
+}
+
+#right_block {
+    background-color: brown;
+}
