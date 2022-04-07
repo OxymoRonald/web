@@ -12,12 +12,10 @@ p {
 }
 
 #wrapper {
-    background-color: blueviolet;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    left: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: coral;
+    justify-content: space-between;
 }
 
 #left_block {
@@ -25,5 +23,6 @@ p {
 }
 
 #right_block {
+    width: 350px;
     background-color: brown;
 }
