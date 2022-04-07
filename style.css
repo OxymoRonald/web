@@ -35,6 +35,19 @@ body {
         padding: 5px;
     }
 
+    .item_image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .item_description {
+        width: 300px;
+    }
+
+    .item_add {
+        width: 100px;
+    }
+
 #right_block {
     width: 350px;
     background-color: brown;
