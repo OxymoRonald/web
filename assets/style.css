@@ -9,6 +9,7 @@ body {
 
 #header {
     font-size: 48px;
+    padding-left: 10px;
 }
 
 #main {
@@ -28,6 +29,7 @@ body {
         float: left;
         display: block;
         margin-left: 10px;
+        margin-bottom: 10px;
     }
 
     .itemlist th {
@@ -51,7 +53,7 @@ body {
         }
 
     .item_body {
-        width: 260px;
+        width: 280px;
     }
 
         .item_title {
@@ -67,7 +69,12 @@ body {
     }
 
     .item_buttons {
-        background-color:cornflowerblue;
+        /* background-color:cornflowerblue; */
+        padding:3px;
+    }
+
+    .item_buttons img:first-child {
+        margin-bottom: 5px;
     }
 
     .item_counter {
@@ -77,6 +84,6 @@ body {
     }
 
 #right_block {
-    width: 410px;
+    min-width: 410px;
     background-color: brown;
 }

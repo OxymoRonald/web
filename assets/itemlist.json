@@ -1,0 +1,102 @@
+{
+    "Food":{
+        "type": "items",
+        "Dirty Fries":{
+            "description": "That&apos;s some dirty fries",
+            "image": "fries.png",
+            "price": 80
+        },
+        "Heart Attack Burger":{
+            "description": "That&apos;s a nice burger",
+            "image": "burger.png",
+            "price": 80
+        },
+        "Mamma&apos;s Chicken Wings":{
+            "description": "That&apos;s some good wings",
+            "image": "unknown.png",
+            "price": 80
+        }
+    },
+    "Drinks":{
+        "type": "items",
+        "Sweet Tea":{
+            "description": "That&apos;s some sweet tea",
+            "image": "unknown.png",
+            "price": 80
+        },
+        "Root Beer":{
+            "description": "That&apos;s some root beer",
+            "image": "unknown.png",
+            "price": 80
+        },
+        "Beer":{
+            "description": "That&apos;s some beer",
+            "image": "unknown.png",
+            "price": 80
+        },
+        "Whiskey":{
+            "description": "That&apos;s some whiskey",
+            "image": "unknown.png",
+            "price": 80
+        },
+        "Vodka":{
+            "description": "That&apos;s some vodka",
+            "image": "unknown.png",
+            "price": 80
+        }
+    },
+    "Miscelaneous":{
+        "type": "items",
+        "Whiskey Tincture":{
+            "description": "That&apos;s some healing",
+            "image": "unknown.png",
+            "price": 80
+        },
+        "Morningwood Cigarettes":{
+            "description": "That&apos;s some smokes",
+            "image": "unknown.png",
+            "price": 80
+        },
+        "Lost Plushie":{
+            "description": "That&apos;s a cute plushie",
+            "image": "unknown.png",
+            "price": 80
+        }
+    },
+    "Combos":{
+        "type": "combos",
+        "Heart Attack Meal":{
+            "description": "Heart Attack Meal description",
+            "image": "unknown.png",
+            "items":{
+                "Dirty Fries":1, 
+                "Heart Attack Burger":1, 
+                "Root Beer":1
+            },
+            "price":230
+        },
+        "Hungry Man Combo":{
+            "description": "Hungry Man Combo description",
+            "image": "unknown.png",
+            "items":{
+                "Dirty Fries":2, 
+                "Heart Attack Burger":3, 
+                "Root Beer":2
+            },
+            "price":540
+        },
+        "Gimme the 9s":{
+            "description": "Gimme the nines description",
+            "image": "unknown.png",
+            "items":{
+                "Dirty Fries":2, 
+                "Heart Attack Burger":2, 
+                "Mamma&apos;s Chicken Wings":2,
+                "Sweet Tea":2,
+                "Root Beer":2,
+                "Whiskey Tincture":4
+            },
+            "price":999
+        }
+    }
+}

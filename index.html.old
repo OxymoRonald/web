@@ -1,5 +1,7 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <title>YellowJack POS</title>
         <link type="text/css" rel="stylesheet" href="style.css">
     </head>
     <body>
