@@ -30,8 +30,8 @@ function main(){
                         mainTable += "<div class='item_description'>"+ jsonData[group][item].description +"</div></td>";
                     // Add buttons cell
                         mainTable += "<td class='item_add'><div class='item_buttons'>";
-                        mainTable += "<img src='assets/green_small.png' alt='Add' onclick='posOrder(\""+ item +"\", \""+ jsonData[group][item].price +"\",\"add\")'>";
-                        mainTable += "<img src='assets/red_small.png' alt='Subtract' onclick='posOrder(\""+ item +"\", \""+ jsonData[group][item].price +"\",\"subtract\")'>";
+                        mainTable += "<img src='assets/green_small.png' alt='Add' onclick='posOrder(\""+ item +"\", \"add\")'>";
+                        mainTable += "<img src='assets/red_small.png' alt='Subtract' onclick='posOrder(\""+ item +"\", \"subtract\")'>";
                         mainTable += "</div></td>";
                     // End table row
                     mainTable += "</tr>";
@@ -47,11 +47,12 @@ function main(){
 
 };
 
+// Update orders
 // Create an object to store orders in
 const orderObject = {};
 
-function posOrder(name, price, modifier){
-    console.log(name,price,modifier);
+function posOrder(name, modifier){
+    // console.log(name, modifier);
 
     // Check if item in orderObject
     if(orderObject.hasOwnProperty(name)){
@@ -59,14 +60,14 @@ function posOrder(name, price, modifier){
 
         // If modifier is add
         if(modifier == "add"){
-            orderObject[name]["amount"] += 1;
+            orderObject[name] += 1;
         }
         // If modifier is subtract
         else if(modifier == "subtract"){
             // If theres more than 0 subtract
-            if(orderObject[name]["amount"] > 1){
+            if(orderObject[name] > 1){
                 // Subtract 1
-                orderObject[name]["amount"] -= 1;
+                orderObject[name] -= 1;
             }
             // If its already 0 remove from object
             else{
@@ -78,21 +79,114 @@ function posOrder(name, price, modifier){
         // If modifier is add
         if(modifier == "add"){
             // Add item to object
-            orderObject[name] = {};
-            orderObject[name]["price"] = price;
-            orderObject[name]["amount"] = 1;
+            orderObject[name] = 1;
+            // orderObject[name] = {};
+            // orderObject[name]["amount"] = 1;
         }
     }
     
-        //orderObject[name]["price"] = price;
-    // If modifier is add
-    if(modifier == "add"){
-    }
-    
 
+    //console.log(orderObject);
 
+    // Load JSON file again
+    $.getJSON("assets/itemlist.json", function(jsonData){
 
+        // Variable to store order total in
+        var orderTotal = 0;
 
-    console.log(orderObject);
+        // Create order table
+        var orderTable = "<table>";
+        // Add header
+        orderTable += "<tr><th colspan='4'>Order</th></tr>";
+
+        // For each item in orderobject
+        for(item in orderObject){
+            // console.log(item, orderObject[item]);
+            // Iterate through members to find item
+            for(group in jsonData){
+                // console.log(group)
+                // If item is in group
+                if(jsonData[group].hasOwnProperty(item)){
+                    // console.log("Item: " + item + " found in: " + group);
+                    // Add price to total
+                    orderTotal += (orderObject[item] * jsonData[group][item].price);
+
+                    // Add row to table
+                    orderTable += "<tr>";
+                    orderTable += "<td>" + orderObject[item] + "</td>";
+                    orderTable += "<td>img</td>";
+                    orderTable += "<td>" + item + "</td>";
+                    orderTable += "<td>$ " + (orderObject[item] * jsonData[group][item].price) + "</td>";
+                    orderTable += "</tr>";
+                }
+            }
+        }
+
+        // Display order total
+        orderTable += "<tr><td colspan='3'>Total</td><td>$ " + orderTotal + "</td></tr>";
+        // Create a total count of items to get
+        // Add header for total items
+        orderTable += "<tr><th colspan='4'>Itemlist</th></tr>";
+
+        // Copy orderObject to add items from menus to
+        const itemTotals = Object.assign({}, orderObject);
+        // console.log(itemTotals);
+        // For each item in itemTotals
+        for(tItem in itemTotals){
+            //console.log(tItem); // Itemname
+            // For each group in the json array
+            for(tGroup in jsonData){
+                //console.log(tGroup)
+                // Check if item is part of current group.
+                if(jsonData[tGroup].hasOwnProperty(tItem)){
+                    //console.log(jsonData[tGroup]);
+                    //console.log("Item: " + tItem + " found in: " + tGroup);
+                    // Check if the current group is a combos group
+                    if(jsonData[tGroup].type == "combos"){
+                        //console.log(tItem + " is a combo");
+                        // For each item that is part of the combo
+                        for(menuItem in jsonData[tGroup][tItem].items){
+                            //console.log(menuItem);
+                            // If item is already in object
+                            if(itemTotals.hasOwnProperty(menuItem)){
+                                // console.log("Menu item: " + menuItem + " found");
+                                // console.log("Menu count: " + itemTotals[tItem]);
+                                // console.log("Item per menu count: " + jsonData[tGroup][tItem].items[menuItem]);
+                                // Add count to object
+                                itemTotals[menuItem] += (itemTotals[tItem] * jsonData[tGroup][tItem].items[menuItem]);
+                                //itemTotals[menuItem] += jsonData[tGroup][tItem].items[menuItem];
+                            }
+                            else{
+                                // console.log("Menu item: " + menuItem + " not found");
+                                // console.log("else: " + jsonData[tGroup][tItem].items[menuItem]);
+                                itemTotals[menuItem] = (itemTotals[tItem] * jsonData[tGroup][tItem].items[menuItem]);
+                            };
+                        };
+                        // console.log("Item name: " + tItem)
+                        // Remove menu from list
+                        delete itemTotals[tItem];
+                    };
+                };
+            };
+        };
+        console.log(itemTotals);
+        //console.log(itemTotals);
+
+        // // For each item in itemTotals create a row
+        for(item in itemTotals){
+            orderTable += "<tr>";
+            orderTable += "<td>" + itemTotals[item] + "</td>";
+            orderTable += "<td>img</td>";
+            orderTable += "<td colspan='2'>" + item + "</td>";
+            // orderTable += "<td>$ " + (orderObject[item] * jsonData[group][item].price) + "</td>";
+            orderTable += "</tr>";
+        }
+
+        // Close table
+        orderTable += "</table>";
+
+        // Replace rigth column with table
+        document.getElementById("right_block").innerHTML = orderTable;
+
+    });
 };
-

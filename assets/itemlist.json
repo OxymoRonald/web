@@ -11,7 +11,7 @@
             "image": "burger.png",
             "price": 80
         },
-        "Mamma&apos;s Chicken Wings":{
+        "Mammas Chicken Wings":{
             "description": "That&apos;s some good wings",
             "image": "unknown.png",
             "price": 80
@@ -91,7 +91,7 @@
             "items":{
                 "Dirty Fries":2, 
                 "Heart Attack Burger":2, 
-                "Mamma&apos;s Chicken Wings":2,
+                "Mammas Chicken Wings":2,
                 "Sweet Tea":2,
                 "Root Beer":2,
                 "Whiskey Tincture":4
