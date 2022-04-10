@@ -4,24 +4,25 @@
 }
 
 body {
-    background-color: bisque;
+    background-color: white;
 }
 
 #header {
     font-size: 48px;
-    padding-left: 10px;
+    padding: 10px;
+    padding-top:0px;
 }
 
 #main {
     display: flex;
     flex-direction: row;
-    background-color: coral;
+    /* background-color: coral; */
     justify-content: space-between;
 }
 
-#left_block {
+/* #left_block {
     background-color: aqua;
-}
+} */
 
     .itemlist {
         border: 3px solid black;
@@ -57,7 +58,7 @@ body {
     }
 
         .item_title {
-            font-size: 24px;
+            font-size: 22px;
         }
 
         .item_description {
@@ -69,7 +70,6 @@ body {
     }
 
     .item_buttons {
-        /* background-color:cornflowerblue; */
         padding:3px;
     }
 
@@ -77,13 +77,79 @@ body {
         margin-bottom: 5px;
     }
 
-    .item_counter {
-        font-size: 24px;
-        padding:15px;
-        background-color: chartreuse;
-    }
-
-#right_block {
-    min-width: 410px;
+/* #right_block {
     background-color: brown;
+} */
+
+.orderlist {
+    border: 3px solid black;
+    border-collapse: collapse;
+    float: left;
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.orderlist th {
+    font-size: 24px;
+    padding: 5px;
+    border-bottom:3px solid black;
+}
+
+.orderlist td {
+    font-size: 22px;
+}
+
+.ordercounter {
+    text-align: center;
+    padding: 0px 5px;
+}
+
+.orderimage {
+    padding: 0px;
+}
+
+.orderimage img {
+    margin-top:5px;
+    margin-right: 5px;
+    width:40px;
+}
+
+.ordertitle {
+    width:310px;
+}
+
+.orderprice {
+    width:100px;
+    padding-right:5px;
+    text-align: right;
+}
+
+.ordertotal {
+    border-top: 2px solid black;
+    text-align: right;
+    font-weight: normal;
+}
+
+.ordertotalprice {
+    border-top: 2px solid black;
+    text-align: right;
+    font-weight: normal;
+}
+
+#reload {
+    text-align: center;
+    padding:5px;
+    border-top: 3px solid black;
+}
+
+#reload button{
+    background-color: rgb(255, 91, 91);
+    font-weight: bold;
+    font-size: 16px;
+    color:rgb(36, 36, 36);
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
 }

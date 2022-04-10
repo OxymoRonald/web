@@ -24,7 +24,7 @@ function main(){
                     // Add table row
                     mainTable += "<tr>";
                     // Add image cell
-                    mainTable += "<td class='item_image'><img src='products/"+ jsonData[group][item].image +"' alt='Burger'></td>";
+                    mainTable += "<td class='item_image'><img src='products/"+ jsonData[group][item].image +"' alt='" + item + "'></td>";
                     // Add text cell
                         mainTable += "<td class='item_body'><div class='item_title'>"+ item +"<br/>$"+ jsonData[group][item].price +"</div>";
                         mainTable += "<div class='item_description'>"+ jsonData[group][item].description +"</div></td>";
@@ -95,7 +95,7 @@ function posOrder(name, modifier){
         var orderTotal = 0;
 
         // Create order table
-        var orderTable = "<table>";
+        var orderTable = "<table class='orderlist'>";
         // Add header
         orderTable += "<tr><th colspan='4'>Order</th></tr>";
 
@@ -113,17 +113,17 @@ function posOrder(name, modifier){
 
                     // Add row to table
                     orderTable += "<tr>";
-                    orderTable += "<td>" + orderObject[item] + "</td>";
-                    orderTable += "<td>img</td>";
-                    orderTable += "<td>" + item + "</td>";
-                    orderTable += "<td>$ " + (orderObject[item] * jsonData[group][item].price) + "</td>";
+                    orderTable += "<td class='ordercounter'>" + orderObject[item] + "</td>";
+                    orderTable += "<td class='orderimage'><img src='products/"+ jsonData[group][item].image +"'/></td>";
+                    orderTable += "<td class='ordertitle'>" + item + "</td>";
+                    orderTable += "<td class='orderprice'>$ " + (orderObject[item] * jsonData[group][item].price) + "</td>";
                     orderTable += "</tr>";
                 }
             }
         }
 
         // Display order total
-        orderTable += "<tr><td colspan='3'>Total</td><td>$ " + orderTotal + "</td></tr>";
+        orderTable += "<tr><th colspan='3' class='ordertotal'>Total</th><th class='ordertotalprice'>$ " + orderTotal + "</th></tr>";
         // Create a total count of items to get
         // Add header for total items
         orderTable += "<tr><th colspan='4'>Itemlist</th></tr>";
@@ -169,19 +169,29 @@ function posOrder(name, modifier){
                 };
             };
         };
-        console.log(itemTotals);
+        //console.log(itemTotals);
         //console.log(itemTotals);
 
         // // For each item in itemTotals create a row
         for(item in itemTotals){
-            orderTable += "<tr>";
-            orderTable += "<td>" + itemTotals[item] + "</td>";
-            orderTable += "<td>img</td>";
-            orderTable += "<td colspan='2'>" + item + "</td>";
-            // orderTable += "<td>$ " + (orderObject[item] * jsonData[group][item].price) + "</td>";
-            orderTable += "</tr>";
+            // console.log(item);
+            // console.log(itemTotals)
+            // console.log(jsonData);
+            for(group in jsonData){
+                if(jsonData[group].hasOwnProperty(item)){
+                    console.log("Menu item: " + item + " found in " + group);
+                    orderTable += "<tr>";
+                    orderTable += "<td class='ordercounter'>" + itemTotals[item] + "</td>";
+                    orderTable += "<td class='orderimage'><img src='products/"+ jsonData[group][item].image +"'/></td>";
+                    orderTable += "<td colspan='2'>" + item + "</td>";
+                    // orderTable += "<td>$ " + (orderObject[item] * jsonData[group][item].price) + "</td>";
+                    orderTable += "</tr>";
+                }
+            }
         }
 
+        // Add reset button
+        orderTable += "<tr><td colspan='4' id='reload'><button onClick='window.location.reload();'>Reset</button></td></tr>"
         // Close table
         orderTable += "</table>";
 
